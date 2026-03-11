@@ -26,7 +26,7 @@ Key practices enforced:
 
 1. Clone this repository (or add it as a git submodule):
    ```
-   git clone https://github.com/anthropics/claude-code-guardrails.git
+   git clone https://github.com/ekut/claude-code-guardrails.git
    ```
 2. Reference the plugin from your project's Claude Code configuration.
 
