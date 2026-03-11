@@ -12,6 +12,8 @@ Key practices the plugin aims to enforce:
 - Test coverage 80%+ by lines
 - Search for existing solutions before implementing
 
+See [ROADMAP.md](ROADMAP.md) for the full development plan and milestone details.
+
 This is an open-source project under the MIT license.
 
 ## Conventions
