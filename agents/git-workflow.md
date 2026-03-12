@@ -28,7 +28,7 @@ You handle these git operations:
 - **Branch**: Create and switch branches following the naming convention
 - **Push**: Push branches to remote
 - **PR**: Create pull requests with proper title, description, and labels
-- **Merge**: Merge branches following the project's merge strategy
+- **Merge**: Merge branches following the project's merge strategy. After merge, run `git fetch --prune` to clean up stale remote tracking refs
 - **Tag**: Create version tags when appropriate
 
 ## Rules
