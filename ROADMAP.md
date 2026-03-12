@@ -2,17 +2,17 @@
 
 Development milestones for claude-code-guardrails, organized by practice area.
 
-| Version | Practice | Status |
-|---------|----------|--------|
-| v0.1 | Git Workflow | Done |
-| v0.2 | Specification Driven Design | Planned |
-| v0.3 | Search Before Build | Planned |
-| v0.4 | Testing Discipline | Planned |
-| v0.5 | Code Review & PR Quality | Planned |
-| v0.6 | Documentation Standards | Planned |
-| v0.7 | Security Practices | Planned |
-| v0.8 | Release & CI/CD | Planned |
-| v1.0 | Stable Release | Planned |
+| Version | Practice                    | Status  |
+|---------|-----------------------------|---------|
+| v0.1    | Git Workflow                | Done    |
+| v0.2    | Specification Driven Design | Done    |
+| v0.3    | Search Before Build         | Planned |
+| v0.4    | Testing Discipline          | Planned |
+| v0.5    | Code Review & PR Quality    | Planned |
+| v0.6    | Documentation Standards     | Planned |
+| v0.7    | Security Practices          | Planned |
+| v0.8    | Release & CI/CD             | Planned |
+| v1.0    | Stable Release              | Planned |
 
 ---
 
@@ -29,14 +29,14 @@ A consistent git workflow prevents messy histories, lost work, and merge conflic
 
 ---
 
-## v0.2 — Specification Driven Design
+## v0.2 — Specification Driven Design (Done)
 
 Writing a spec before code forces you to think through requirements, edge cases, and scope — reducing wasted effort and rework.
 
 **Deliverables:**
-- Spec templates for features, bug fixes, and refactors
-- Rule requiring a spec (or explicit opt-out) before implementation begins
-- ADR (Architecture Decision Record) support for significant design choices
+- `spec` skill — interactive wizard that walks through requirements, design, and tasks phases
+- Spec templates (lightweight, requirements, design, tasks) in `skills/spec/supporting-files/`
+- `spec-driven-design` rule — nudges toward writing specs before non-trivial changes
 
 **Plugin mechanisms:** rules, skill (spec creation)
 
