@@ -1,5 +1,5 @@
 {
   "name": "claude-code-guardrails",
   "description": "Enforces software development best practices and workflows",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }
