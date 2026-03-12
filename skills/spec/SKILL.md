@@ -9,6 +9,7 @@ allowed-tools:
   - Write
   - Glob
   - AskUserQuestion
+  - mcp__sequential-thinking__sequentialthinking
 ---
 
 # Spec Creation Wizard
@@ -17,7 +18,9 @@ You are an interactive specification creation wizard. Your job is to help the us
 
 ## Step 1 — Get the Topic
 
-Use AskUserQuestion to ask:
+If the user already provided a name or description as an argument to `/spec` (e.g. `/spec user-authentication`), use that and skip the question below.
+
+Otherwise, use AskUserQuestion to ask:
 
 > What is this spec about? Give a short name (e.g. `user-authentication`, `fix-login-redirect`) and a brief description of the change.
 
@@ -25,7 +28,7 @@ Extract a kebab-case short name from the answer (e.g. `user-authentication`).
 
 ## Step 2 — Determine Next Prefix
 
-Use Glob with pattern `specs/*/` to list existing spec folders. Determine the next numeric prefix by finding the highest existing prefix and adding 1. If no specs exist, start with `01`. Always zero-pad to two digits (01, 02, ... 09, 10, 11, ...).
+Use Glob with pattern `specs/*/*.md` to list existing spec files. Extract folder names to determine the next numeric prefix by finding the highest existing prefix and adding 1. If no specs exist, start with `01`. Always zero-pad to two digits (01, 02, ... 09, 10, 11, ...).
 
 ## Step 3 — Assess Scope
 
@@ -45,11 +48,7 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 5. Revise if needed, then write to `specs/{NN}-{name}/spec.md`
 6. Summarize and done
 
-## Step 4 — Create Folder
-
-Create the spec folder: `specs/{NN}-{name}/`
-
-## Step 5 — Phase 1: Requirements
+## Step 4 — Phase 1: Requirements
 
 1. Read the template from `skills/spec/supporting-files/requirements-template.md`
 2. Discuss with the user using AskUserQuestion. Ask about:
@@ -63,7 +62,7 @@ Create the spec folder: `specs/{NN}-{name}/`
 6. Revise if the user requests changes. Repeat until satisfied.
 7. Write to `specs/{NN}-{name}/requirements.md`
 
-## Step 6 — Phase 2: Design
+## Step 5 — Phase 2: Design
 
 1. Read the template from `skills/spec/supporting-files/design-template.md`
 2. Discuss with the user using AskUserQuestion. Ask about:
@@ -77,7 +76,7 @@ Create the spec folder: `specs/{NN}-{name}/`
 6. Revise if the user requests changes. Repeat until satisfied.
 7. Write to `specs/{NN}-{name}/design.md`
 
-## Step 7 — Phase 3: Tasks
+## Step 6 — Phase 3: Tasks
 
 1. Read the template from `skills/spec/supporting-files/tasks-template.md`
 2. Based on the requirements and design, generate a task breakdown
@@ -87,7 +86,7 @@ Create the spec folder: `specs/{NN}-{name}/`
 6. Revise if the user requests changes. Repeat until satisfied.
 7. Write to `specs/{NN}-{name}/tasks.md`
 
-## Step 8 — Summary
+## Step 7 — Summary
 
 Summarize what was created:
 
