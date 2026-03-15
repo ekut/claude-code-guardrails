@@ -18,14 +18,13 @@ Key practices enforced:
 
 ## How It Works
 
-The plugin uses four mechanism types to shape Claude Code's behavior:
+The plugin uses three mechanism types to shape Claude Code's behavior:
 
-| Mechanism | What it does                                              | Example                                                    |
-|-----------|-----------------------------------------------------------|------------------------------------------------------------|
-| Rules     | Always-on constraints loaded into every conversation      | `git-workflow` — enforces branch naming and commit format  |
-| Skills    | Interactive workflows invoked via `/skill-name`           | `/spec` — walks through requirements, design, and tasks    |
-| Agents    | Specialized sub-agents that handle delegated tasks        | `git-workflow` — executes commits, pushes, PRs, merges     |
-| Hooks     | Shell commands triggered by Claude Code events (planned)  | Secrets detection — block commits containing API keys      |
+| Mechanism | What it does                                         | Example                                                   |
+|-----------|------------------------------------------------------|-----------------------------------------------------------|
+| Rules     | Always-on constraints loaded into every conversation | `git-workflow` — enforces branch naming and commit format |
+| Skills    | Interactive workflows invoked via `/skill-name`      | `/spec` — walks through requirements, design, and tasks   |
+| Agents    | Specialized sub-agents that handle delegated tasks   | `git-workflow` — executes commits, pushes, PRs, merges    |
 
 Project structure:
 
@@ -41,15 +40,15 @@ claude-code-guardrails/
     spec-driven-design.md    # nudges toward specs before coding
 ```
 
-## Current Features (v0.2)
+## Current Features
 
-### v0.1 — Git Workflow
+### Git Workflow
 
 - **Git workflow agent** — delegates all git write operations (commit, push, branch, PR, merge, tag) to a specialized agent that enforces conventions
 - **Git flow setup skill** — interactive wizard (`/git-flow-setup`) that configures branch naming, commit format, and PR rules
 - **Git workflow rules** — branch naming format, conventional commits, squash merge policy, protected branches
 
-### v0.2 — Specification Driven Design
+### Specification Driven Design
 
 - **Spec skill** — interactive wizard (`/spec`) that walks through requirements, design, and tasks phases to produce a complete specification before implementation begins
 - **Spec templates** — lightweight, requirements, design, and tasks templates in `skills/spec/supporting-files/`
