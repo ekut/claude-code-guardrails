@@ -33,7 +33,7 @@ Use AskUserQuestion to ask:
 > What version is this spec for? (e.g. `0.3`, `0.4`, `1.0`) — or leave blank if this isn't tied to a specific version.
 
 - If the user provides a version: use `{version}-{name}` as the folder name (e.g. `0.3-search-before-build`)
-- If the user leaves blank: use Glob with pattern `.specs/*/*.md` to find existing spec folders, determine the next sequential number, and use `{NN}-{name}` (zero-padded to two digits, e.g. `01-feature-name`)
+- If the user leaves blank: use Glob with pattern `specs/*/*.md` to find existing spec folders, determine the next sequential number, and use `{NN}-{name}` (zero-padded to two digits, e.g. `01-feature-name`)
 
 ## Step 3 — Assess Scope
 
@@ -50,7 +50,7 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 2. Generate a `spec.md` by filling in the template based on the user's description
 3. Present the spec to the user
 4. Use AskUserQuestion to ask: "Does this look good? Any changes needed?"
-5. Revise if needed, then write to `.specs/{folder-name}/spec.md`
+5. Revise if needed, then write to `specs/{folder-name}/spec.md`
 6. Summarize and done
 
 ## Step 4 — Phase 1: Requirements
@@ -65,7 +65,7 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 4. Present the full document to the user
 5. Use AskUserQuestion to ask: "Are you satisfied with the requirements? Any changes or additions?"
 6. Revise if the user requests changes. Repeat until satisfied.
-7. Write to `.specs/{folder-name}/requirements.md`
+7. Write to `specs/{folder-name}/requirements.md`
 
 ## Step 5 — Phase 2: Design
 
@@ -79,7 +79,7 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 4. Present the full document to the user
 5. Use AskUserQuestion to ask: "Are you satisfied with the design? Any changes?"
 6. Revise if the user requests changes. Repeat until satisfied.
-7. Write to `.specs/{folder-name}/design.md`
+7. Write to `specs/{folder-name}/design.md`
 
 ## Step 6 — Phase 3: Tasks
 
@@ -89,7 +89,7 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 4. Present the task list to the user
 5. Use AskUserQuestion to ask: "Does this task breakdown look right? Any tasks to add, remove, or reorder?"
 6. Revise if the user requests changes. Repeat until satisfied.
-7. Write to `.specs/{folder-name}/tasks.md`
+7. Write to `specs/{folder-name}/tasks.md`
 
 ## Step 7 — Commit the Spec
 
