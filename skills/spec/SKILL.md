@@ -86,10 +86,11 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 1. Read the template from `skills/spec/supporting-files/tasks-template.md`
 2. Based on the requirements and design, generate a task breakdown
 3. Each task should be concrete, actionable, and ordered by implementation sequence
-4. Present the task list to the user
-5. Use AskUserQuestion to ask: "Does this task breakdown look right? Any tasks to add, remove, or reorder?"
-6. Revise if the user requests changes. Repeat until satisfied.
-7. Write to `specs/{folder-name}/tasks.md`
+4. Always include a **documentation task** as the last task before the commit/PR task. Use AskUserQuestion to ask: "Where should documentation be updated? (e.g. root README, module README, CHANGELOG — or skip if no docs needed)"
+5. Present the task list to the user
+6. Use AskUserQuestion to ask: "Does this task breakdown look right? Any tasks to add, remove, or reorder?"
+7. Revise if the user requests changes. Repeat until satisfied.
+8. Write to `specs/{folder-name}/tasks.md`
 
 ## Step 7 — Commit the Spec
 
