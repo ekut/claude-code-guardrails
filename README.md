@@ -38,6 +38,7 @@ claude-code-guardrails/
   .claude/rules/
     git-workflow.md          # branch naming, commits, PR rules
     spec-driven-design.md    # nudges toward specs before coding
+    search-before-build.md   # reuse existing code before writing new
 ```
 
 ## Current Features
@@ -53,6 +54,11 @@ claude-code-guardrails/
 - **Spec skill** — interactive wizard (`/spec`) that walks through requirements, design, and tasks phases to produce a complete specification before implementation begins
 - **Spec templates** — lightweight, requirements, design, and tasks templates in `skills/spec/supporting-files/`
 - **Spec-driven design rule** — nudges toward writing specs before non-trivial changes; checks `specs/` for existing specs and suggests `/spec` when none is found
+
+### Search Before Build
+
+- **Search before build rule** — requires searching the codebase and package registries before writing new utilities, helpers, or abstractions
+- **Deduplication awareness** — flags when new code overlaps with existing project code and suggests reuse or extraction
 
 ## Usage Examples
 

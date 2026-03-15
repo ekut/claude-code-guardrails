@@ -7,11 +7,11 @@
 3. [x] Update `.claude/rules/spec-driven-design.md` — change `specs/` references to `.specs/`
 4. [x] Update `ROADMAP.md` — mark v0.3 as Done
 5. [x] Update `.claude-plugin/plugin.json` — bump version to 0.3.0
-6. [ ] Commit via git-workflow agent on a feature branch, create PR
+6. [x] Commit via git-workflow agent on a feature branch, create PR
 
 ## Definition of Done
 
 - [x] All success criteria from requirements are met
 - [x] `specs/` references updated to `.specs/` across spec skill and rule
-- [ ] Changes reviewed and approved
-- [ ] Merged to main
+- [x] Changes reviewed and approved
+- [x] Merged to main
