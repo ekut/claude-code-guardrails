@@ -16,11 +16,51 @@ Key practices enforced:
 - **Test coverage 80%+** — by lines, configurable
 - **Search before build** — check what exists before writing new code
 
-## Current Features (v0.1)
+## How It Works
+
+The plugin uses three mechanism types to shape Claude Code's behavior:
+
+| Mechanism | What it does                                         | Example                                                   |
+|-----------|------------------------------------------------------|-----------------------------------------------------------|
+| Rules     | Always-on constraints loaded into every conversation | `git-workflow` — enforces branch naming and commit format |
+| Skills    | Interactive workflows invoked via `/skill-name`      | `/spec` — walks through requirements, design, and tasks   |
+| Agents    | Specialized sub-agents that handle delegated tasks   | `git-workflow` — executes commits, pushes, PRs, merges    |
+
+Project structure:
+
+```
+claude-code-guardrails/
+  agents/
+    git-workflow.md          # git operations agent
+  skills/
+    git-flow-setup/          # interactive git flow wizard
+    spec/                    # spec creation wizard
+  .claude/rules/
+    git-workflow.md          # branch naming, commits, PR rules
+    spec-driven-design.md    # nudges toward specs before coding
+```
+
+## Current Features
+
+### Git Workflow
 
 - **Git workflow agent** — delegates all git write operations (commit, push, branch, PR, merge, tag) to a specialized agent that enforces conventions
-- **Git flow setup skill** — interactive wizard that configures branch naming, commit format, and PR rules
+- **Git flow setup skill** — interactive wizard (`/git-flow-setup`) that configures branch naming, commit format, and PR rules
 - **Git workflow rules** — branch naming format, conventional commits, squash merge policy, protected branches
+
+### Specification Driven Design
+
+- **Spec skill** — interactive wizard (`/spec`) that walks through requirements, design, and tasks phases to produce a complete specification before implementation begins
+- **Spec templates** — lightweight, requirements, design, and tasks templates in `skills/spec/supporting-files/`
+- **Spec-driven design rule** — nudges toward writing specs before non-trivial changes; checks `specs/` for existing specs and suggests `/spec` when none is found
+
+## Usage Examples
+
+**Starting a new feature.** You tell Claude "let's add user authentication". The `spec-driven-design` rule kicks in — Claude suggests running `/spec` first. The wizard walks you through requirements, design decisions, and task breakdown. Only after the spec is written does implementation begin, following the task list.
+
+**Making a commit.** You say "commit these changes". Claude delegates to the `git-workflow` agent, which stages files, writes a conventional commit message, and creates the commit — all following the rules defined during `/git-flow-setup`. No manual formatting needed.
+
+**Setting up git flow on a new project.** You run `/git-flow-setup` and the wizard asks which flow you prefer (GitHub Flow, Git Flow Classic, or Trunk-Based). It generates the rules file and agent configuration so every future git operation follows your chosen conventions.
 
 ## Installation
 
