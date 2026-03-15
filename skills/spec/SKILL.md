@@ -1,9 +1,9 @@
 ---
 name: spec
 description: >
-  Interactive specification creation wizard. Walks through three phases
-  (requirements, design, tasks) to produce a complete spec before
-  implementation begins.
+  Interactive specification creation wizard. Walks through four phases
+  (requirements, design, tasks, optional test plan) to produce a complete
+  spec before implementation begins.
 allowed-tools:
   - Read
   - Write
@@ -92,7 +92,15 @@ If **small**, go to the Lightweight Flow. Otherwise, continue to Step 4.
 7. Revise if the user requests changes. Repeat until satisfied.
 8. Write to `specs/{folder-name}/tasks.md`
 
-## Step 7 — Commit the Spec
+## Step 7 — Phase 4: Test Plan (Optional)
+
+After tasks are written, offer to generate a test plan:
+
+1. Use AskUserQuestion to ask: "Want to generate a test plan for this spec? (Invokes `/test-plan` in generate mode)"
+2. If the user says yes: invoke the `/test-plan` skill in generate mode, passing the spec folder as context
+3. If the user declines: skip and continue
+
+## Step 8 — Commit the Spec
 
 After all spec files are written, suggest committing the spec before starting implementation:
 
@@ -100,7 +108,7 @@ After all spec files are written, suggest committing the spec before starting im
 - This keeps the spec and implementation in separate commits for clean history
 - If the user declines, proceed without committing
 
-## Step 8 — Summary
+## Step 9 — Summary
 
 Summarize what was created:
 

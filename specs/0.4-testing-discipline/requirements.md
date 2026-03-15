@@ -29,4 +29,6 @@ AI coding assistants readily skip tests or write minimal coverage unless explici
 
 ## Open Questions
 
-- Should `.claude/testing.json` live in the project root or under `.claude/`? (Leaning `.claude/` for consistency with other plugin config)
+*None — all resolved during design.*
+
+- ~~Should `.claude/testing.json` live in the project root or under `.claude/`?~~ **Resolved:** under `.claude/` for consistency with other plugin config.

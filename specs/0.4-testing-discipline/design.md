@@ -67,7 +67,7 @@ Add optional Phase 4 to `skills/spec/SKILL.md`:
 | Alternative                  | Pros                     | Cons                           | Why Rejected                              |
 |------------------------------|--------------------------|--------------------------------|-------------------------------------------|
 | Hardcode coverage tools      | Simpler implementation   | Breaks language-agnostic goal  | Plugin must work across all stacks        |
-| TDD enforcement              | Stronger test discipline | Too opinionated, slows work    | User explicitly chose to skip             |
+| TDD enforcement              | Stronger test discipline | Too opinionated, slows work    | Too prescriptive for a general-purpose plugin |
 | Test plan inside /spec only  | Simpler, one skill       | Can't check coverage ad-hoc   | User wants standalone coverage checking   |
 
 ## Risks and Unknowns

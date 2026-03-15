@@ -7,7 +7,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 | v0.1    | Git Workflow                | Done    |
 | v0.2    | Specification Driven Design | Done    |
 | v0.3    | Search Before Build         | Done    |
-| v0.4    | Testing Discipline          | Planned |
+| v0.4    | Testing Discipline          | Done    |
 | v0.5    | Code Review & PR Quality    | Planned |
 | v0.6    | Documentation Standards     | Planned |
 | v0.7    | Security Practices          | Planned |
@@ -55,14 +55,15 @@ Developers (and AI assistants) often reinvent what already exists. Searching the
 
 ---
 
-## v0.4 — Testing Discipline
+## v0.4 — Testing Discipline (Done)
 
 Tests catch regressions, document behavior, and enable confident refactoring. Without coverage enforcement, test debt accumulates silently.
 
 **Deliverables:**
 - Coverage enforcement rule (configurable threshold, default 80% by lines)
-- TDD workflow support — encourage test-first when appropriate
-- `test-plan` skill — generate a test plan from a spec or feature description
+- `test-plan` skill — generate a test plan from a spec or feature description, check current coverage
+- Optional `.claude/testing.json` config with auto-discovery fallback
+- `/spec` Phase 4 integration — optional test plan generation after tasks
 
 **Plugin mechanisms:** rules, skill
 
