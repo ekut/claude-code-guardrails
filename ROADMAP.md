@@ -6,7 +6,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 |---------|-----------------------------|---------|
 | v0.1    | Git Workflow                | Done    |
 | v0.2    | Specification Driven Design | Done    |
-| v0.3    | Search Before Build         | Planned |
+| v0.3    | Search Before Build         | Done    |
 | v0.4    | Testing Discipline          | Planned |
 | v0.5    | Code Review & PR Quality    | Planned |
 | v0.6    | Documentation Standards     | Planned |
@@ -42,7 +42,7 @@ Writing a spec before code forces you to think through requirements, edge cases,
 
 ---
 
-## v0.3 — Search Before Build
+## v0.3 — Search Before Build (Done)
 
 Developers (and AI assistants) often reinvent what already exists. Searching the codebase and package registries first avoids duplication and leverages proven solutions.
 
