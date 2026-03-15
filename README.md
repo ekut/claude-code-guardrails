@@ -35,10 +35,12 @@ claude-code-guardrails/
   skills/
     git-flow-setup/          # interactive git flow wizard
     spec/                    # spec creation wizard
+    test-plan/               # test plan generator + coverage checker
   .claude/rules/
     git-workflow.md          # branch naming, commits, PR rules
     spec-driven-design.md    # nudges toward specs before coding
     search-before-build.md   # reuse existing code before writing new
+    testing-discipline.md    # test coverage enforcement
 ```
 
 ## Current Features
@@ -51,7 +53,7 @@ claude-code-guardrails/
 
 ### Specification Driven Design
 
-- **Spec skill** — interactive wizard (`/spec`) that walks through requirements, design, and tasks phases to produce a complete specification before implementation begins
+- **Spec skill** — interactive wizard (`/spec`) that walks through requirements, design, tasks, and optional test plan phases to produce a complete specification before implementation begins
 - **Spec templates** — lightweight, requirements, design, and tasks templates in `skills/spec/supporting-files/`
 - **Spec-driven design rule** — nudges toward writing specs before non-trivial changes; checks `specs/` for existing specs and suggests `/spec` when none is found
 
@@ -59,6 +61,13 @@ claude-code-guardrails/
 
 - **Search before build rule** — requires searching the codebase and package registries before writing new utilities, helpers, or abstractions
 - **Deduplication awareness** — flags when new code overlaps with existing project code and suggests reuse or extraction
+
+### Testing Discipline
+
+- **Testing discipline rule** — ensures tests are written and coverage meets a configurable threshold (default 80% by lines)
+- **Test plan skill** — interactive wizard (`/test-plan`) with two modes: generate a test plan from a spec, or check current project coverage
+- **Testing config** — optional `.claude/testing.json` stores test/coverage commands; auto-discovers setup if no config exists
+- **Spec integration** — `/spec` now offers an optional Phase 4 to generate a test plan after tasks are defined
 
 ## Usage Examples
 
