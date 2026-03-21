@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.7] — 2026-03-21
+
+### Features
+- v0.7 — Security Practices (#10) (1a289a3)
+
 ## [v0.6] — 2026-03-21
 
 ### Features
