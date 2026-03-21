@@ -7,6 +7,8 @@
 #   .secretsignore — list paths/patterns to skip (gitignore syntax)
 #   # nosecret     — inline comment to suppress a specific line
 #
+# git-hook: pre-commit
+#
 # Usage (as a git pre-commit hook):
 #   ln -sf ../../hooks/check-secrets.sh .git/hooks/pre-commit
 

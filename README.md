@@ -18,6 +18,7 @@ Key practices enforced:
 - **Code review & PR quality** — structured PRs, size limits, review checklists
 - **Documentation standards** — README generation, changelog management, docs sync
 - **Security practices** — secrets detection, dependency audit, security review checklist
+- **Release & hooks** — automated releases with platform detection, hook management
 
 ## How It Works
 
@@ -52,6 +53,8 @@ claude-code-guardrails/
         conventional-changelog-template.md
         keep-a-changelog-template.md
     security-audit/              # on-demand security scanning
+    release/                     # release wizard
+    hooks-setup/                 # hook discovery and installation
   hooks/
     check-secrets.sh             # pre-commit secrets detection hook
   specs/                         # feature specifications
@@ -113,6 +116,12 @@ claude-code-guardrails/
 - **Security audit skill** — on-demand scanner (`/security-audit`) that checks the codebase for committed secrets and audits dependencies for known vulnerabilities with auto-discovery of the project stack
 - **Enhanced review checklist** — expanded security section covering secrets, dependency audit, cryptography, error leakage, TLS, and least privilege
 
+### Release & Hooks Setup
+
+- **Release skill** — interactive wizard (`/release`) that automates the full release cycle: semver bump, CHANGELOG update, git tagging, and optional platform release with auto-detection of GitHub/GitLab
+- **Hooks setup skill** — discovery and installation wizard (`/hooks-setup`) that finds available hooks in `hooks/`, shows install status, and creates git hook symlinks with conflict detection
+- **Tag format in git-flow-setup** — `/git-flow-setup` now asks about tag/version format (vX.Y.Z, X.Y.Z, calendar, custom) and saves the preference for `/release` to use
+
 ## Usage Examples
 
 **Starting a new feature.** You tell Claude "let's add user authentication". The `spec-driven-design` rule kicks in — Claude suggests running `/spec` first. The wizard walks you through requirements, design decisions, and task breakdown. Only after the spec is written does implementation begin, following the task list.
@@ -130,6 +139,10 @@ claude-code-guardrails/
 **Bootstrapping or auditing a README.** You run `/readme` — on a new project, the wizard asks for project name, install method, and license, then generates a complete README from a template. On an existing project, it offers to audit the current README for completeness and accuracy against the codebase.
 
 **Running a security audit.** You run `/security-audit` and the skill scans your codebase for hardcoded secrets (AWS keys, GitHub tokens, private keys) and checks dependencies for known vulnerabilities. It auto-discovers your stack and runs the appropriate audit tool (`npm audit`, `pip audit`, etc.).
+
+**Releasing a version.** You run `/release` and the wizard asks for bump type (patch/minor/major), updates the CHANGELOG, creates a git tag, and offers to create a GitHub or GitLab release — all auto-detected from your origin URL.
+
+**Setting up hooks.** You run `/hooks-setup` and the skill discovers available hooks, shows which are installed, and creates git hook symlinks. If an existing hook conflicts, it warns and offers to back it up.
 
 ## Installation
 

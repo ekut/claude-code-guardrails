@@ -11,7 +11,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 | v0.5    | Code Review & PR Quality    | Done    |
 | v0.6    | Documentation Standards     | Done    |
 | v0.7    | Security Practices          | Done    |
-| v0.8    | Release & CI/CD             | Planned |
+| v0.8    | Release & Hooks Setup       | Done    |
 | v1.0    | Stable Release              | Planned |
 
 ---
@@ -110,13 +110,14 @@ Security issues are expensive to fix after deployment. Catching secrets, vulnera
 
 ---
 
-## v0.8 — Release & Hooks Setup
+## v0.8 — Release & Hooks Setup (Done)
 
 A repeatable release process reduces human error and makes deployments predictable. Easy hook installation ensures every team member has the same safety nets.
 
 **Deliverables:**
-- `release` skill — interactive release wizard with semver bumping, git tagging, release notes from CHANGELOG, and GitHub release creation
-- `hooks-setup` skill — discovers available hooks in `hooks/` and helps install them as git hooks with symlinks
+- `release` skill — interactive release wizard with semver bumping, CHANGELOG update, git tagging, and platform release auto-detection (GitHub/GitLab)
+- `hooks-setup` skill — discovers available hooks in `hooks/`, shows status, installs via symlinks with conflict detection
+- Tag format selection added to `/git-flow-setup` and git-flow templates
 
 **Plugin mechanisms:** skill
 
