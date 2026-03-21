@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.8] — 2026-03-21
+
+### Features
+- v0.8 — Release & Hooks Setup (#11) (5d8d509)
+
+### Documentation
+- **roadmap:** revise v0.8 scope — release workflow and hooks setup (bb5b5b3)
+
 ## [v0.7] — 2026-03-21
 
 ### Features
