@@ -10,7 +10,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 | v0.4    | Testing Discipline          | Done    |
 | v0.5    | Code Review & PR Quality    | Done    |
 | v0.6    | Documentation Standards     | Done    |
-| v0.7    | Security Practices          | Planned |
+| v0.7    | Security Practices          | Done    |
 | v0.8    | Release & CI/CD             | Planned |
 | v1.0    | Stable Release              | Planned |
 
@@ -96,16 +96,17 @@ Documentation rots faster than code. Automated rules ensure READMEs stay current
 
 ---
 
-## v0.7 — Security Practices
+## v0.7 — Security Practices (Done)
 
 Security issues are expensive to fix after deployment. Catching secrets, vulnerable dependencies, and common mistakes early is far cheaper.
 
 **Deliverables:**
-- Secrets detection hook — block commits containing API keys, tokens, or credentials
-- Dependency audit — flag known vulnerabilities in dependencies
-- Security checklist for code review
+- `security-practices` rule — prevents committing secrets, reminds to audit dependencies on changes
+- `check-secrets.sh` hook — scans staged diffs for secret patterns with `.secretsignore` and `# nosecret` suppression
+- `security-audit` skill — on-demand secrets scan and dependency audit with auto-discovery
+- Expanded security section in the review checklist (OWASP-informed checks)
 
-**Plugin mechanisms:** hooks, rules
+**Plugin mechanisms:** hooks, rules, skill
 
 ---
 
