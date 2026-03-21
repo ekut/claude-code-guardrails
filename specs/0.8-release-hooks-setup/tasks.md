@@ -8,7 +8,7 @@
 4. [x] Create `hooks-setup` skill — wrote `skills/hooks-setup/SKILL.md` with hook discovery from `hooks/`, `# git-hook:` header parsing, status display, symlink install/uninstall, and conflict detection with backup
 5. [x] Add `# git-hook: pre-commit` header to `hooks/check-secrets.sh` for auto-mapping
 6. [x] Update documentation — updated README (Current Features, project structure, usage examples) and ROADMAP.md (marked v0.8 as Done)
-7. [ ] Dogfooding — test `/release` on this repository, test `/hooks-setup` to verify hook discovery and status
+7. [ ] Dogfooding — deferred to v1.0: test `/release` and `/hooks-setup` on this repository
 
 ## Definition of Done
 

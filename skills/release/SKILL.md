@@ -47,19 +47,14 @@ If no argument:
 
 1. Check if there are commits since the last tag: `git log {last-tag}..HEAD --oneline`
 2. If no new commits, warn and ask if the user still wants to release
-3. Invoke the changelog generation logic:
-   - Read the CHANGELOG format preference from `.claude/rules/documentation-standards.md`
-   - Run `git log --format="%h %s" {last-tag}..HEAD`
-   - Parse and group commits
-   - Generate the entry with the new version label
-4. Present the CHANGELOG entry for review
-5. Prepend to CHANGELOG.md
+3. Invoke `/changelog {last-tag}..HEAD` — this reuses the existing changelog skill which handles format detection, commit parsing, grouping, and writing to CHANGELOG.md
+4. When `/changelog` asks for the version label, provide the version determined in Step 2
 
 ## Step 4 — Commit and Tag
 
 1. If CHANGELOG.md was updated, commit it: `git commit -m "docs: update CHANGELOG for {version}"`
 2. Create an annotated git tag: `git tag -a {version} -m "Release {version}"`
-3. Push commit and tag: `git push origin main --tags`
+3. Push commit and tag: `git push origin HEAD --tags`
 
 ## Step 5 — Platform Release (optional)
 
