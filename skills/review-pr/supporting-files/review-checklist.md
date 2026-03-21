@@ -19,10 +19,16 @@ Use this checklist to evaluate code changes. For each category, note specific fi
 ## Security
 
 - No hardcoded secrets, API keys, or credentials
+- No `.env` or credentials files included in the diff
 - User input is validated and sanitized
 - No injection vulnerabilities (SQL, command, XSS)
 - Authentication and authorization checks are correct
 - Sensitive data is not logged or exposed
+- Dependencies added/updated have been audited for vulnerabilities
+- Cryptographic operations use established libraries, not custom implementations
+- Error messages do not leak internal details (stack traces, paths, versions)
+- HTTPS/TLS is used for all external communication
+- Access controls follow the principle of least privilege
 
 ## Readability
 

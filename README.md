@@ -17,6 +17,7 @@ Key practices enforced:
 - **Search before build** — check what exists before writing new code
 - **Code review & PR quality** — structured PRs, size limits, review checklists
 - **Documentation standards** — README generation, changelog management, docs sync
+- **Security practices** — secrets detection, dependency audit, security review checklist
 
 ## How It Works
 
@@ -50,6 +51,9 @@ claude-code-guardrails/
       supporting-files/
         conventional-changelog-template.md
         keep-a-changelog-template.md
+    security-audit/              # on-demand security scanning
+  hooks/
+    check-secrets.sh             # pre-commit secrets detection hook
   specs/                         # feature specifications
   .claude/rules/
     git-workflow.md              # branch naming, commits, PR rules
@@ -58,6 +62,7 @@ claude-code-guardrails/
     testing-discipline.md        # test coverage enforcement
     pr-quality.md                # PR size limits and description requirements
     documentation-standards.md   # docs sync, changelog reminders, table formatting
+    security-practices.md        # secrets prevention, dependency audit reminders
   CHANGELOG.md                   # project changelog
   CLAUDE.md                      # instructions for Claude Code
 ```
@@ -101,6 +106,13 @@ claude-code-guardrails/
 - **README skill** — interactive wizard (`/readme`) that generates a new README or audits an existing one for completeness and accuracy
 - **Changelog skill** — generator (`/changelog`) that creates CHANGELOG entries from git history, supporting Conventional Changelog and Keep a Changelog formats with auto-detection from git tags
 
+### Security Practices
+
+- **Security practices rule** — prevents committing files with secrets (`.env`, credentials, private keys), scans diffs for hardcoded API keys and tokens, reminds to audit dependencies when dependency files change
+- **Secrets detection hook** — shell script (`hooks/check-secrets.sh`) that scans staged diffs for secret patterns before each commit, with `.secretsignore` and `# nosecret` suppression
+- **Security audit skill** — on-demand scanner (`/security-audit`) that checks the codebase for committed secrets and audits dependencies for known vulnerabilities with auto-discovery of the project stack
+- **Enhanced review checklist** — expanded security section covering secrets, dependency audit, cryptography, error leakage, TLS, and least privilege
+
 ## Usage Examples
 
 **Starting a new feature.** You tell Claude "let's add user authentication". The `spec-driven-design` rule kicks in — Claude suggests running `/spec` first. The wizard walks you through requirements, design decisions, and task breakdown. Only after the spec is written does implementation begin, following the task list.
@@ -116,6 +128,8 @@ claude-code-guardrails/
 **Generating a changelog.** You run `/changelog` and the skill parses your git history from the last tag, groups commits by type, and generates a formatted CHANGELOG entry. On first run, it asks which format you prefer — Conventional Changelog or Keep a Changelog — and remembers your choice.
 
 **Bootstrapping or auditing a README.** You run `/readme` — on a new project, the wizard asks for project name, install method, and license, then generates a complete README from a template. On an existing project, it offers to audit the current README for completeness and accuracy against the codebase.
+
+**Running a security audit.** You run `/security-audit` and the skill scans your codebase for hardcoded secrets (AWS keys, GitHub tokens, private keys) and checks dependencies for known vulnerabilities. It auto-discovers your stack and runs the appropriate audit tool (`npm audit`, `pip audit`, etc.).
 
 ## Installation
 
