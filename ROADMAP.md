@@ -9,7 +9,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 | v0.3    | Search Before Build         | Done    |
 | v0.4    | Testing Discipline          | Done    |
 | v0.5    | Code Review & PR Quality    | Done    |
-| v0.6    | Documentation Standards     | Planned |
+| v0.6    | Documentation Standards     | Done    |
 | v0.7    | Security Practices          | Planned |
 | v0.8    | Release & CI/CD             | Planned |
 | v1.0    | Stable Release              | Planned |
@@ -83,14 +83,14 @@ Good PRs are small, well-described, and easy to review. Quality gates at the PR 
 
 ---
 
-## v0.6 — Documentation Standards
+## v0.6 — Documentation Standards (Done)
 
 Documentation rots faster than code. Automated rules ensure READMEs stay current, changelogs are maintained, and key decisions are recorded.
 
 **Deliverables:**
-- README template skill for new projects
-- CHANGELOG management — prompt for changelog entries on notable changes
-- Documentation rules — keep docs in sync with code changes
+- `readme` skill — interactive wizard (`/readme`) for generating structured project READMEs
+- `changelog` skill — generator (`/changelog`) that creates CHANGELOG entries from git history, supporting Conventional Changelog and Keep a Changelog formats
+- `documentation-standards` rule — docs sync reminders, CHANGELOG prompts on feat/fix, markdown table alignment
 
 **Plugin mechanisms:** rules, skill
 

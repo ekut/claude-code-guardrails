@@ -16,6 +16,7 @@ Key practices enforced:
 - **Test coverage 80%+** — by lines, configurable
 - **Search before build** — check what exists before writing new code
 - **Code review & PR quality** — structured PRs, size limits, review checklists
+- **Documentation standards** — README generation, changelog management, docs sync
 
 ## How It Works
 
@@ -40,12 +41,15 @@ claude-code-guardrails/
     spec/                    # spec creation wizard
     test-plan/               # test plan generator + coverage checker
     review-pr/               # code review skill
+    readme/                  # README generation wizard
+    changelog/               # changelog generation from git history
   .claude/rules/
     git-workflow.md          # branch naming, commits, PR rules
     spec-driven-design.md    # nudges toward specs before coding
     search-before-build.md   # reuse existing code before writing new
     testing-discipline.md    # test coverage enforcement
     pr-quality.md            # PR size limits and description requirements
+    documentation-standards.md # docs sync, changelog reminders, table formatting
 ```
 
 ## Current Features
@@ -81,6 +85,12 @@ claude-code-guardrails/
 - **Auto-detect input** — `/review-pr` works with GitHub PR numbers/URLs, uncommitted local changes, or branch diffs vs main
 - **PR template** — reusable template in `agents/supporting-files/pr-template.md` used by the git-workflow agent when creating PRs
 
+### Documentation Standards
+
+- **Documentation standards rule** — reminds to update docs when code changes affect public interfaces or project structure, prompts for CHANGELOG entries on `feat`/`fix` commits, enforces aligned markdown tables
+- **README skill** — interactive wizard (`/readme`) that generates a structured README by asking about the project name, installation method, and license
+- **Changelog skill** — generator (`/changelog`) that creates CHANGELOG entries from git history, supporting Conventional Changelog and Keep a Changelog formats with auto-detection from git tags
+
 ## Usage Examples
 
 **Starting a new feature.** You tell Claude "let's add user authentication". The `spec-driven-design` rule kicks in — Claude suggests running `/spec` first. The wizard walks you through requirements, design decisions, and task breakdown. Only after the spec is written does implementation begin, following the task list.
@@ -92,6 +102,10 @@ claude-code-guardrails/
 **Reviewing a PR.** You run `/review-pr 42` and the skill fetches the PR diff from GitHub, checks it against size limits, and analyzes the code for correctness, test coverage, security issues, and readability. You get a structured report in the terminal. Works with local changes too — run `/review-pr` without arguments and it auto-detects uncommitted changes or the branch diff vs main.
 
 **Creating a PR.** You say "create a PR". The `pr-quality` rule ensures the description includes a summary, changes list, test plan, and self-review checklist. If the diff exceeds 400 lines or 10 files, Claude warns you and suggests splitting into smaller PRs.
+
+**Generating a changelog.** You run `/changelog` and the skill parses your git history from the last tag, groups commits by type, and generates a formatted CHANGELOG entry. On first run, it asks which format you prefer — Conventional Changelog or Keep a Changelog — and remembers your choice.
+
+**Bootstrapping a README.** You run `/readme` on a new project and the wizard asks for project name, install method, and license, then generates a complete README from a template.
 
 ## Installation
 
