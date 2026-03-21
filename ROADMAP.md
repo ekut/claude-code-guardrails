@@ -110,16 +110,15 @@ Security issues are expensive to fix after deployment. Catching secrets, vulnera
 
 ---
 
-## v0.8 — Release & CI/CD
+## v0.8 — Release & Hooks Setup
 
-A repeatable release process reduces human error and makes deployments predictable. CI/CD ensures every change is validated automatically.
+A repeatable release process reduces human error and makes deployments predictable. Easy hook installation ensures every team member has the same safety nets.
 
 **Deliverables:**
-- Release workflow — semver versioning, git tagging, release notes
-- CI template generation for common providers
-- Pre-commit hooks setup for linting and formatting
+- `release` skill — interactive release wizard with semver bumping, git tagging, release notes from CHANGELOG, and GitHub release creation
+- `hooks-setup` skill — discovers available hooks in `hooks/` and helps install them as git hooks with symlinks
 
-**Plugin mechanisms:** skill, hooks, rules
+**Plugin mechanisms:** skill
 
 ---
 
