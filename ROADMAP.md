@@ -12,7 +12,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 | v0.6    | Documentation Standards     | Done    |
 | v0.7    | Security Practices          | Done    |
 | v0.8    | Release & Hooks Setup       | Done    |
-| v1.0    | Stable Release              | Planned |
+| v1.0    | Stable Release              | Done    |
 
 ---
 
@@ -123,12 +123,31 @@ A repeatable release process reduces human error and makes deployments predictab
 
 ---
 
-## v1.0 — Stable Release
+## v1.0 — Stable Release (Done)
 
 The plugin is feature-complete for its core practices. All mechanisms are validated through real-world use (dogfooding) and documented for contributors.
 
 **Deliverables:**
-- Dogfooding validation — confirm all practices work on this repository itself
-- CONTRIBUTING.md with guidelines for external contributors
-- Documentation polish — all skills, agents, and rules are documented
-- Stability guarantees — no breaking changes without a major version bump
+- `rules-setup` skill — interactive wizard for installing rule templates to user's project
+- Clean rule templates in `rules/` directory (product), separate from project-specific copies
+- `plugin.json` updated to v1.0 with full metadata
+- CONTRIBUTING.md with architecture overview and contributor guidelines
+- README rewrite — comprehensive installation, update, and uninstall instructions
+- Documentation polish — all skills, agents, and rules documented
+- Dogfooding validation — all practices validated on this repository
+
+**Plugin mechanisms:** skill, rules
+
+---
+
+## Future Ideas
+
+Have an idea for a language-agnostic development practice that could be automated? [Open an issue](https://github.com/ekut/claude-code-guardrails/issues) — we'd love to hear what processes your team wants guardrails for.
+
+Potential directions:
+- Official Anthropic marketplace publication
+- Additional practices (dependency management, performance budgets, accessibility, API design review, ...)
+- CI/CD template generation for common providers
+- GUI dashboard for rule configuration
+- Team analytics — track how well practices are followed across a project
+- Integration with more hosting platforms (Bitbucket, AWS CodeCommit)

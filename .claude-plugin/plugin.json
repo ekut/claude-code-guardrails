@@ -1,5 +1,12 @@
 {
   "name": "claude-code-guardrails",
-  "description": "Enforces software development best practices and workflows",
-  "version": "0.3.0"
+  "description": "Enforces software development best practices — spec-driven design, git workflow, testing, code review, documentation, security, and release management",
+  "version": "1.0.0",
+  "author": {
+    "name": "Aleksandr (Alex) Kosachev",
+    "url": "https://github.com/ekut"
+  },
+  "homepage": "https://github.com/ekut/claude-code-guardrails",
+  "repository": "https://github.com/ekut/claude-code-guardrails",
+  "license": "MIT"
 }
