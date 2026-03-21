@@ -42,23 +42,6 @@ You handle these git operations:
 - Use the body to explain *what* and *why*, not *how*
 - Reference issue numbers when applicable (e.g., `closes #123`)
 
-## PR Description Template
+## PR Description
 
-When creating a PR, use this structure:
-```
-## What
-
-Brief description of what this PR does.
-
-## Why
-
-Motivation and context for the change.
-
-## Changes
-
-- List of notable changes
-
-## Testing
-
-How the changes were tested.
-```
+When creating a PR, read the template from `agents/supporting-files/pr-template.md` and fill it in based on the changes being submitted.
