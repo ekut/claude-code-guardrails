@@ -8,7 +8,7 @@ Development milestones for claude-code-guardrails, organized by practice area.
 | v0.2    | Specification Driven Design | Done    |
 | v0.3    | Search Before Build         | Done    |
 | v0.4    | Testing Discipline          | Done    |
-| v0.5    | Code Review & PR Quality    | Planned |
+| v0.5    | Code Review & PR Quality    | Done    |
 | v0.6    | Documentation Standards     | Planned |
 | v0.7    | Security Practices          | Planned |
 | v0.8    | Release & CI/CD             | Planned |
@@ -69,16 +69,17 @@ Tests catch regressions, document behavior, and enable confident refactoring. Wi
 
 ---
 
-## v0.5 — Code Review & PR Quality
+## v0.5 — Code Review & PR Quality (Done)
 
 Good PRs are small, well-described, and easy to review. Quality gates at the PR level catch issues before they reach the main branch.
 
 **Deliverables:**
-- PR description templates with summary, test plan, and checklist
-- Review checklists covering correctness, tests, security, and readability
-- PR size recommendations — warn when PRs exceed a reasonable diff size
+- `review-pr` skill — code review wizard (`/review-pr`) that analyzes GitHub PRs or local diffs against a standardized checklist
+- `pr-quality` rule — enforces PR description completeness and size limits (default: 400 lines, 10 files)
+- Review checklist covering correctness, tests, security, and readability
+- PR template extracted to `agents/supporting-files/pr-template.md`, used by git-workflow agent
 
-**Plugin mechanisms:** rules, skill (PR template generation)
+**Plugin mechanisms:** rules, skill
 
 ---
 

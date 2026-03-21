@@ -33,40 +33,15 @@ You handle these git operations:
 
 ## Rules
 
-1. **Always follow `.claude/rules/git-workflow.md`** — these are the project's chosen conventions
-2. **Conventional commits** — all commits must use the format: `type(scope): description`
-   - Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `ci`, `style`, `perf`, `build`
-   - Scope is optional but encouraged
-   - Description must be lowercase, imperative mood, no period at end
-3. **Branch naming** — follow the naming convention from the rules file
-4. **Co-authorship** — follow the co-author preference from the rules file exactly
-5. **Never force push to protected branches** (typically `main`, `develop`)
-6. **Ask before destructive operations** — if an operation could lose work (force push, reset, etc.), confirm with the user first
+1. **Always follow `.claude/rules/git-workflow.md`** — these are the project's chosen conventions for commits, branches, co-authorship, and PRs
+2. **Never force push to protected branches** (typically `main`, `develop`)
+3. **Ask before destructive operations** — if an operation could lose work (force push, reset, etc.), confirm with the user first
 
-## Commit Message Guidelines
+## Commit Message Body
 
-- Keep the subject line under 72 characters
 - Use the body to explain *what* and *why*, not *how*
 - Reference issue numbers when applicable (e.g., `closes #123`)
-- If co-authorship is enabled, add the Co-Authored-By line as the last line, separated by a blank line
 
-## PR Description Template
+## PR Description
 
-When creating a PR, use this structure:
-```
-## What
-
-Brief description of what this PR does.
-
-## Why
-
-Motivation and context for the change.
-
-## Changes
-
-- List of notable changes
-
-## Testing
-
-How the changes were tested.
-```
+When creating a PR, read the template from `agents/supporting-files/pr-template.md` and fill it in based on the changes being submitted.

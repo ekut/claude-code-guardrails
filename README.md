@@ -15,6 +15,7 @@ Key practices enforced:
 - **Optimal git flow** — clean history, conventional commits, PR-based workflow
 - **Test coverage 80%+** — by lines, configurable
 - **Search before build** — check what exists before writing new code
+- **Code review & PR quality** — structured PRs, size limits, review checklists
 
 ## How It Works
 
@@ -32,15 +33,19 @@ Project structure:
 claude-code-guardrails/
   agents/
     git-workflow.md          # git operations agent
+    supporting-files/
+      pr-template.md         # PR description template
   skills/
     git-flow-setup/          # interactive git flow wizard
     spec/                    # spec creation wizard
     test-plan/               # test plan generator + coverage checker
+    review-pr/               # code review skill
   .claude/rules/
     git-workflow.md          # branch naming, commits, PR rules
     spec-driven-design.md    # nudges toward specs before coding
     search-before-build.md   # reuse existing code before writing new
     testing-discipline.md    # test coverage enforcement
+    pr-quality.md            # PR size limits and description requirements
 ```
 
 ## Current Features
@@ -69,6 +74,13 @@ claude-code-guardrails/
 - **Testing config** — optional `.claude/testing.json` stores test/coverage commands; auto-discovers setup if no config exists
 - **Spec integration** — `/spec` now offers an optional Phase 4 to generate a test plan after tasks are defined
 
+### Code Review & PR Quality
+
+- **PR quality rule** — enforces PR description completeness (summary, changes, test plan, checklist) and warns when PRs exceed size limits (default: 400 lines, 10 files)
+- **Review PR skill** — code review wizard (`/review-pr`) that analyzes diffs against a standardized checklist covering correctness, tests, security, and readability
+- **Auto-detect input** — `/review-pr` works with GitHub PR numbers/URLs, uncommitted local changes, or branch diffs vs main
+- **PR template** — reusable template in `agents/supporting-files/pr-template.md` used by the git-workflow agent when creating PRs
+
 ## Usage Examples
 
 **Starting a new feature.** You tell Claude "let's add user authentication". The `spec-driven-design` rule kicks in — Claude suggests running `/spec` first. The wizard walks you through requirements, design decisions, and task breakdown. Only after the spec is written does implementation begin, following the task list.
@@ -76,6 +88,10 @@ claude-code-guardrails/
 **Making a commit.** You say "commit these changes". Claude delegates to the `git-workflow` agent, which stages files, writes a conventional commit message, and creates the commit — all following the rules defined during `/git-flow-setup`. No manual formatting needed.
 
 **Setting up git flow on a new project.** You run `/git-flow-setup` and the wizard asks which flow you prefer (GitHub Flow, Git Flow Classic, or Trunk-Based). It generates the rules file and agent configuration so every future git operation follows your chosen conventions.
+
+**Reviewing a PR.** You run `/review-pr 42` and the skill fetches the PR diff from GitHub, checks it against size limits, and analyzes the code for correctness, test coverage, security issues, and readability. You get a structured report in the terminal. Works with local changes too — run `/review-pr` without arguments and it auto-detects uncommitted changes or the branch diff vs main.
+
+**Creating a PR.** You say "create a PR". The `pr-quality` rule ensures the description includes a summary, changes list, test plan, and self-review checklist. If the diff exceeds 400 lines or 10 files, Claude warns you and suggests splitting into smaller PRs.
 
 ## Installation
 
