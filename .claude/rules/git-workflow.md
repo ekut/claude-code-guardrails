@@ -44,6 +44,10 @@ type(scope): description
 - No force push to `main`
 - No direct commits to `main`
 
+## Tag Format
+
+Format: vX.Y.Z
+
 ## Delegation
 
 All git write operations (commit, push, branch creation, PR, merge, tag) MUST be delegated to the `git-workflow` agent. Never run git write commands directly from the main agent.

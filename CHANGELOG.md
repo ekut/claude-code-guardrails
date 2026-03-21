@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.0.0] — 2026-03-21
+
+### Features
+- v1.0 — Stable Release (#12) (dbf7364)
+
+### Documentation
+- add v0.8 entry to CHANGELOG (24b70de)
+
 ## [v0.8] — 2026-03-21
 
 ### Features
