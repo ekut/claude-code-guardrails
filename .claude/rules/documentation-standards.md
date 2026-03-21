@@ -35,3 +35,7 @@ Example of correct formatting:
 | value 1  | value 2  | value 3  |
 | longer   | short    | medium   |
 ```
+
+## CHANGELOG Format Preference
+
+Format: conventional-changelog

@@ -33,23 +33,33 @@ Project structure:
 ```
 claude-code-guardrails/
   agents/
-    git-workflow.md          # git operations agent
+    git-workflow.md              # git operations agent
     supporting-files/
-      pr-template.md         # PR description template
+      pr-template.md             # PR description template
   skills/
-    git-flow-setup/          # interactive git flow wizard
-    spec/                    # spec creation wizard
-    test-plan/               # test plan generator + coverage checker
-    review-pr/               # code review skill
-    readme/                  # README generation wizard
-    changelog/               # changelog generation from git history
+    git-flow-setup/              # interactive git flow wizard
+    spec/                        # spec creation wizard
+    test-plan/                   # test plan generator + coverage checker
+    review-pr/                   # code review skill
+      supporting-files/
+        review-checklist.md      # review checklist template
+    readme/                      # README generation & audit wizard
+      supporting-files/
+        readme-template.md       # README template
+    changelog/                   # changelog generation from git history
+      supporting-files/
+        conventional-changelog-template.md
+        keep-a-changelog-template.md
+  specs/                         # feature specifications
   .claude/rules/
-    git-workflow.md          # branch naming, commits, PR rules
-    spec-driven-design.md    # nudges toward specs before coding
-    search-before-build.md   # reuse existing code before writing new
-    testing-discipline.md    # test coverage enforcement
-    pr-quality.md            # PR size limits and description requirements
-    documentation-standards.md # docs sync, changelog reminders, table formatting
+    git-workflow.md              # branch naming, commits, PR rules
+    spec-driven-design.md        # nudges toward specs before coding
+    search-before-build.md       # reuse existing code before writing new
+    testing-discipline.md        # test coverage enforcement
+    pr-quality.md                # PR size limits and description requirements
+    documentation-standards.md   # docs sync, changelog reminders, table formatting
+  CHANGELOG.md                   # project changelog
+  CLAUDE.md                      # instructions for Claude Code
 ```
 
 ## Current Features
@@ -88,7 +98,7 @@ claude-code-guardrails/
 ### Documentation Standards
 
 - **Documentation standards rule** — reminds to update docs when code changes affect public interfaces or project structure, prompts for CHANGELOG entries on `feat`/`fix` commits, enforces aligned markdown tables
-- **README skill** — interactive wizard (`/readme`) that generates a structured README by asking about the project name, installation method, and license
+- **README skill** — interactive wizard (`/readme`) that generates a new README or audits an existing one for completeness and accuracy
 - **Changelog skill** — generator (`/changelog`) that creates CHANGELOG entries from git history, supporting Conventional Changelog and Keep a Changelog formats with auto-detection from git tags
 
 ## Usage Examples
@@ -105,7 +115,7 @@ claude-code-guardrails/
 
 **Generating a changelog.** You run `/changelog` and the skill parses your git history from the last tag, groups commits by type, and generates a formatted CHANGELOG entry. On first run, it asks which format you prefer — Conventional Changelog or Keep a Changelog — and remembers your choice.
 
-**Bootstrapping a README.** You run `/readme` on a new project and the wizard asks for project name, install method, and license, then generates a complete README from a template.
+**Bootstrapping or auditing a README.** You run `/readme` — on a new project, the wizard asks for project name, install method, and license, then generates a complete README from a template. On an existing project, it offers to audit the current README for completeness and accuracy against the codebase.
 
 ## Installation
 
