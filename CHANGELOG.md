@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.6] — 2026-03-21
+
+### Features
+- v0.6 — Documentation Standards (#9) (663ff55)
+
 ## [v0.5] — 2026-03-21
 
 ### Features
