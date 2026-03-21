@@ -39,20 +39,36 @@ if [[ -n "$ENV_FILES" ]]; then
   FOUND=1
 fi
 
-# --- Build exclude args from .secretsignore ---
+# --- Build excluded files list from .secretsignore ---
 
-EXCLUDE_ARGS=""
+EXCLUDED_FILES=""
 if [[ -f "$SECRETSIGNORE" ]]; then
-  while IFS= read -r line; do
+  ALL_STAGED=$(git diff --cached --name-only)
+  while IFS= read -r pattern; do
     # Skip empty lines and comments
-    [[ -z "$line" || "$line" == \#* ]] && continue
-    EXCLUDE_ARGS="$EXCLUDE_ARGS --ignore=$line"
+    [[ -z "$pattern" || "$pattern" == \#* ]] && continue
+    # Find staged files matching the ignore pattern
+    IGNORED=$(echo "$ALL_STAGED" | grep -E "$pattern" || true)
+    if [[ -n "$IGNORED" ]]; then
+      EXCLUDED_FILES="$EXCLUDED_FILES"$'\n'"$IGNORED"
+    fi
   done < "$SECRETSIGNORE"
 fi
 
-# --- Scan staged diff for secret patterns ---
+# --- Get staged files to scan (excluding .secretsignore matches) ---
 
-DIFF=$(git diff --cached -U0)
+STAGED_FILES=$(git diff --cached --name-only)
+if [[ -n "$EXCLUDED_FILES" ]]; then
+  STAGED_FILES=$(echo "$STAGED_FILES" | grep -v -F "$EXCLUDED_FILES" || true)
+fi
+
+if [[ -z "$STAGED_FILES" ]]; then
+  exit 0
+fi
+
+# --- Scan staged diff for secret patterns (only non-excluded files) ---
+
+DIFF=$(echo "$STAGED_FILES" | xargs git diff --cached -U0 --)
 
 if [[ -z "$DIFF" ]]; then
   exit 0
