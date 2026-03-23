@@ -1,5 +1,9 @@
 # claude-code-guardrails
 
+[![Version](https://img.shields.io/github/v/release/ekut/claude-code-guardrails?label=version)](https://github.com/ekut/claude-code-guardrails/releases)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-blueviolet)](https://claude.ai/code)
+
 A Claude Code plugin that enforces software development best practices — automatically.
 
 ## What is this?
@@ -27,13 +31,14 @@ Key practices enforced:
 
 ## How It Works
 
-The plugin uses three mechanism types to shape Claude Code's behavior:
+The plugin uses four mechanism types to shape Claude Code's behavior:
 
-| Mechanism | What it does                                         | Example                                                   |
-|-----------|------------------------------------------------------|-----------------------------------------------------------|
-| Rules     | Always-on constraints loaded into every conversation | `git-workflow` — enforces branch naming and commit format |
-| Skills    | Interactive workflows invoked via `/skill-name`      | `/spec` — walks through requirements, design, and tasks   |
-| Agents    | Specialized sub-agents that handle delegated tasks   | `git-workflow` — executes commits, pushes, PRs, merges    |
+| Mechanism | What it does                                         | Example                                                      |
+|-----------|------------------------------------------------------|--------------------------------------------------------------|
+| Rules     | Always-on constraints loaded into every conversation | `testing-discipline` — enforces test coverage                |
+| Skills    | Interactive workflows invoked via `/skill-name`      | `/spec` — walks through requirements, design, and tasks      |
+| Agents    | Specialized sub-agents that handle delegated tasks   | `git-workflow` — executes commits, pushes, PRs, merges       |
+| Hooks     | Shell scripts that run on git events                 | `check-secrets.sh` — blocks commits containing secrets       |
 
 Project structure:
 

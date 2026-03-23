@@ -19,16 +19,22 @@ set -euo pipefail
 SECRETSIGNORE=".secretsignore"
 FOUND=0
 
-# High-confidence secret patterns (extended regex)
+# High-confidence secret patterns (Perl-compatible regex)
 PATTERNS=(
   'AKIA[0-9A-Z]{16}'
-  '(?i)(aws_secret_access_key|aws_secret)\s*[:=]\s*['\''"][A-Za-z0-9/+=]{40}'
+  '(?i)(aws_secret_access_key|aws_secret)\s*[:=]\s*['"'"'"][A-Za-z0-9/+=]{40}'
   'ghp_[A-Za-z0-9]{36}'
   'github_pat_[A-Za-z0-9_]{82}'
   'glpat-[A-Za-z0-9\-]{20,}'
   '-----BEGIN (RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----'
-  '(?i)(api[_-]?key|apikey|secret[_-]?key|api[_-]?secret)\s*[:=]\s*['\''"][A-Za-z0-9]{16,}'
+  '(?i)(api[_-]?key|apikey|secret[_-]?key|api[_-]?secret)\s*[:=]\s*['"'"'"][A-Za-z0-9]{16,}'
 )
+
+# --- Helper: portable regex matching (works on macOS and Linux) ---
+
+match_pattern() {
+  perl -ne "print if /$1/" 2>/dev/null
+}
 
 # --- Check for .env files staged ---
 
@@ -77,8 +83,8 @@ if [[ -z "$DIFF" ]]; then
 fi
 
 for pattern in "${PATTERNS[@]}"; do
-  # Get added lines only (start with +, not +++)
-  MATCHES=$(echo "$DIFF" | grep -P '^\+[^+]' | grep -P "$pattern" | grep -v '# nosecret' || true)
+  # Get added lines only (start with +, not +++), match pattern, exclude nosecret
+  MATCHES=$(echo "$DIFF" | grep '^+[^+]' | match_pattern "$pattern" | grep -v '# nosecret' || true)
 
   if [[ -n "$MATCHES" ]]; then
     echo "ERROR: Potential secret detected matching pattern: $pattern"

@@ -8,7 +8,7 @@
 4. [x] Create `skills/test-plan/supporting-files/test-plan-template.md` — structured template for test plans
 5. [x] Update `skills/spec/SKILL.md` — add optional Phase 4 (test plan) that invokes `/test-plan`
 6. [x] Update documentation — root README (add Testing Discipline section) + ROADMAP (mark v0.4 done)
-7. [ ] Commit via git-workflow agent on a feature branch, create PR
+7. [x] Commit via git-workflow agent on a feature branch, create PR
 
 ## Definition of Done
 

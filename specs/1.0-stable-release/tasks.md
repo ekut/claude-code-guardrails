@@ -10,7 +10,7 @@
 6. [x] Add "Future Ideas" section to ROADMAP — community invitation, potential directions
 7. [x] Documentation polish — verified all skills/agents/rules documented, project structure tree updated, usage examples up to date
 8. [x] Update README and ROADMAP — marked v1.0 as Done
-9. [ ] Dogfooding — test `/rules-setup`, `/hooks-setup`, and use `/release` for the actual v1.0 release
+9. [x] Dogfooding — tested `/rules-setup`, `/hooks-setup`, and used `/release` for the v1.0.0 release
 
 ## Definition of Done
 
