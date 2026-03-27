@@ -1,0 +1,14 @@
+{
+  "name": "claude-code-guardrails",
+  "owner": {
+    "name": "Aleksandr (Alex) Kosachev"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-guardrails",
+      "source": "./",
+      "description": "Enforces software development best practices — spec-driven design, git workflow, testing, code review, documentation, security, and release management",
+      "version": "1.0.0"
+    }
+  ]
+}

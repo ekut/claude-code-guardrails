@@ -106,9 +106,12 @@ After tasks are written, offer to generate a test plan:
 
 After all spec files are written, suggest committing the spec before starting implementation:
 
-- Delegate to the git-workflow agent to commit the spec files
-- This keeps the spec and implementation in separate commits for clean history
-- If the user declines, proceed without committing
+1. **Check current branch**: Run `git branch --show-current` to determine the current branch
+2. **If on `main` (or `master`)**: A spec means non-trivial work ahead — it should go in a feature branch. Suggest creating one based on the spec name (e.g. `feat/v0.5-code-review-pr-quality`). Ask the user to confirm the branch name.
+3. **If already on a feature branch**: proceed on the current branch
+4. Delegate to the git-workflow agent to create the branch (if needed) and commit the spec files
+5. This keeps the spec and implementation in separate commits for clean history
+6. If the user declines committing, proceed without committing
 
 ## Step 9 — Summary
 
