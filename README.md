@@ -1,5 +1,10 @@
 # claude-code-guardrails
 
+> [!NOTE]
+> Archived. Claude Code now ships code review and security review built in, and the official plugin marketplace covers
+> part of the rest. The remaining pieces work better as project-specific skills than as a one-size-fits-all plugin, and
+> prose rules turned out to be reminders rather than guardrails. Kept for reference; not maintained.
+
 [![Version](https://img.shields.io/github/v/release/ekut/claude-code-guardrails?label=version)](https://github.com/ekut/claude-code-guardrails/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Built with Claude Code](https://img.shields.io/badge/built%20with-Claude%20Code-blueviolet)](https://claude.ai/code)
